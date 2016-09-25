@@ -8,6 +8,9 @@ _G.game_art = require("majestyArt").new();
 game_art:loadDecor();
 game_art:loadDeltas();
 -------------------------------------------
+W = display.contentWidth;
+H = display.contentHeight;
+
 local enemies = {};
 local words = {"tom","cat","max","dog","math","fin"} --слова--
 
@@ -26,9 +29,7 @@ for i = 1,#words do
 --	mc:addEventListener("tap",function(e)
 --		mc:removeSelf();
 --	end);
--------------------------------------
-	W = display.contentWidth;
-	H = display.contentHeight;
+	
 -----------------------Перемещаем круг------------
 	--mc.x = math.random()*W;
 	mc.y = math.random(1,#words)*H/#words - H/10;
@@ -39,7 +40,6 @@ for i = 1,#words do
 	table.insert(enemies,mc)
 --------------------------------------------------
 end;
-
 -----------движение гоблинов---------------
 Runtime:addEventListener("enterFrame",function()
 	for i = #enemies,1,-1 do
