@@ -3,11 +3,11 @@
 -- main.lua
 --
 -----------------------------------------------------------------------------------------
--- Your code here
+-- Подключаем библиотеку
 _G.game_art = require("majestyArt").new();
 game_art:loadDecor();
 game_art:loadDeltas();
-
+-------------------------------------------
 local enemies = {};
 local words = {"tom","cat","max","dog","math","fin"} --слова--
 
@@ -16,7 +16,7 @@ function getWord()
 	local id = math.random(1,#words)
 	return words[id];
 end
-for i = 1,5 do
+for i = 1,#words do
 	local mc = display.newGroup();
 	--local body = display.newCircle(0,0,100);
 	local untit = require("objUnit").new("goblin",1,1)
@@ -31,15 +31,13 @@ for i = 1,5 do
 	H = display.contentHeight;
 -----------------------Перемещаем круг------------
 	--mc.x = math.random()*W;
-	mc.y = math.random(1,5)*H/5 - H/10;
+	mc.y = math.random(1,#words)*H/#words - H/10;
 -----------------------Разноцветные круги---------
 	--body:setFillColor(math.random(),math.random(),math.random());]]
 	local word = getWord();
 	local dtxt = display.newText(mc,word,0,0,nil,30);
 	table.insert(enemies,mc)
 --------------------------------------------------
-
-
 end;
 
 -----------движение гоблинов---------------
